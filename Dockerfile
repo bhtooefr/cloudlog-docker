@@ -52,7 +52,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN sed -i "s/\$config\['index_page'\] = 'index.php';/\$config\['index_page'\] = '';/g" ./install/config/config.php
 
 # Copies the .htaccess file to the web root.
-COPY --chown www-data:www-data misc/.htaccess /var/www/html/
+COPY --chown=www-data:www-data misc/.htaccess /var/www/html/
 
 # Modifies the Cloudlog config to set the environment to production. It removes an annoying warning about the environment being set to development.
 RUN sed -i "s/define('ENVIRONMENT', 'development');/define('ENVIRONMENT', 'production');/" ./index.php
