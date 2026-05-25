@@ -3,7 +3,7 @@ FROM php:8.2-apache
 
 # This is the important part.
 # Change the following line to specify the version of Cloudlog you want to install.        
-ARG VERSION=2.8.8 
+ARG VERSION=2.8.10 
 
 # Sets the PHP config up.
 RUN touch /usr/local/etc/php/conf.d/uploads.ini && \
@@ -21,10 +21,15 @@ RUN apt-get update && \
     libxml2-dev \
     libonig-dev \
     wget
-RUN docker-php-ext-install \
+
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN install-php-extensions \
     mysqli \
     mbstring \
-    xml
+    xml \
+    zip \
+    gd
 
 # Enables the Apache rewrite module.    
 RUN a2enmod rewrite
@@ -47,7 +52,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN sed -i "s/\$config\['index_page'\] = 'index.php';/\$config\['index_page'\] = '';/g" ./install/config/config.php
 
 # Copies the .htaccess file to the web root.
-COPY misc/.htaccess /var/www/html/
+COPY --chown=www-data:www-data misc/.htaccess /var/www/html/
 
 # Modifies the Cloudlog config to set the environment to production. It removes an annoying warning about the environment being set to development.
 RUN sed -i "s/define('ENVIRONMENT', 'development');/define('ENVIRONMENT', 'production');/" ./index.php
