@@ -18,7 +18,7 @@ I created it after the team behind Cloudlog decided to rescind any support for D
 
 ## Current version
 
-2.8.8
+2.8.10
 
 ### Please note
 
@@ -36,7 +36,7 @@ You can manually adjust the version number using phpMyAdmin (you can find the ve
 version: '3'
 services:
   cloudlog-main:
-    image: jk13xyz/cloudlog:latest
+    image: #No image available yet - if someone else wants to take this over, let me know
     container_name: cloudlog-main
     depends_on:
       - cloudlog-mysql
