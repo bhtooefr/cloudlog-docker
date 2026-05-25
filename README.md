@@ -1,3 +1,7 @@
+# NOTICE
+
+Please don't rely on this, I'm currently only forking this for my own needs, as [jk13xyz/cloudlog](https://github.com/jk13xyz/cloudlog) has been deprecated.
+
 # jk13xyz/cloudlog
 
 This is an unofficial Docker image for [Cloudlog](https://github.com/magicbug/Cloudlog), a PHP based amateur radio logging software created by 2M0SQL.
