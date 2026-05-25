@@ -18,7 +18,7 @@ I created it after the team behind Cloudlog decided to rescind any support for D
 
 ## Current version
 
-2.8.10
+2.8.11
 
 ### Please note
 
@@ -96,7 +96,7 @@ docker run -d \
     -v cloudlog-uploads:/var/www/html/uploads \
     -p 7373:80 \
     --restart unless-stopped \
-    jk13xyz/cloudlog:latest
+#   No image available yet - if someone else wants to take this over, let me know
 
 docker run -d \
     --name cloudlog-mysql \

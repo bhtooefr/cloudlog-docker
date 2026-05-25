@@ -3,7 +3,7 @@ FROM php:8.2-apache
 
 # This is the important part.
 # Change the following line to specify the version of Cloudlog you want to install.        
-ARG VERSION=2.8.10 
+ARG VERSION=2.8.11 
 
 # Sets the PHP config up.
 RUN touch /usr/local/etc/php/conf.d/uploads.ini && \
