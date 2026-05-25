@@ -3,7 +3,7 @@ FROM php:8.2-apache
 
 # This is the important part.
 # Change the following line to specify the version of Cloudlog you want to install.        
-ARG VERSION=2.8.8 
+ARG VERSION=2.8.10 
 
 # Sets the PHP config up.
 RUN touch /usr/local/etc/php/conf.d/uploads.ini && \
@@ -24,7 +24,9 @@ RUN apt-get update && \
 RUN docker-php-ext-install \
     mysqli \
     mbstring \
-    xml
+    xml \
+    zip \
+    gd
 
 # Enables the Apache rewrite module.    
 RUN a2enmod rewrite
